@@ -25,29 +25,38 @@ namespace UI
         protected override void OnOpen(object[] args)
         {
             // show text score
-            int nScore = GamePlayManager.Instance.gameScore;
-            textScore.gameObject.GetComponent<Text>().text = nScore.ToString();
+            int score = GamePlayManager.Instance.gameScore;
+            textScore.gameObject.GetComponent<Text>().text = score.ToString();
 
             // show bese score
-            textBestScore.gameObject.GetComponent<Text>().text = nScore.ToString();
+            int bestScore = GamePlayManager.Instance.gameBestScore;
+            textBestScore.gameObject.GetComponent<Text>().text = bestScore.ToString();
 
             // is best ?
-            imgNew.gameObject.SetActive(false);
+            if (score > bestScore)
+            {
+                imgNew.gameObject.SetActive(true);
+            }
+            else
+            {
+                imgNew.gameObject.SetActive(false);
+            }
+            
 
             Sprite medal = new Sprite();
-            if (nScore < 10) 
+            if (score < 10) 
             {
                 medal = Resources.Load("Sprites/UI/medals_0", typeof(Sprite)) as Sprite;
             }
-            else if (nScore < 20) 
+            else if (score < 20) 
             {
                 medal = Resources.Load("Sprites/UI/medals_1", typeof(Sprite)) as Sprite;
             }
-            else if (nScore < 50) 
+            else if (score < 50) 
             {
                 medal = Resources.Load("Sprites/UI/medals_2", typeof(Sprite)) as Sprite;
             }
-            else if (nScore < 100) 
+            else if (score < 100) 
             {
                 medal = Resources.Load<Sprite>("Sprites/UI/medals_3");
             }

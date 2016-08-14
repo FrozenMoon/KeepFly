@@ -44,7 +44,7 @@ namespace GamePlay
         public void OnCollisionEnter2D(Collision2D co) {
             if (GamePlayManager.Instance.gameState == GAME_STATE.GAME_STATE_PLAY) 
             {
-                 if (co.gameObject.tag == TagManager.Instance.Bird){
+                 if (co.gameObject.tag == GameSetting.Instance.tagBird){
                     GamePlayManager.Instance.SetGameState(GAME_STATE.GAME_STATE_OVER);
                 }
             }

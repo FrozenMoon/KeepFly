@@ -10,13 +10,17 @@ namespace GamePlay
         public GameObject bird;
         public float speed = 1.5f;
         public GAME_STATE gameState {get; set;}
+
         public int gameScore {get; set;}
+        public int gameBestScore {get; set;}
 
         static bool bStart = false;
 
         public bool Init()
         {
-            bird = GameObject.FindGameObjectWithTag(TagManager.Instance.Bird);
+            gameBestScore = PlayerPrefs.GetInt(GameSetting.Instance.ppBestScore, 0);
+
+            bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
             if (!bStart) 
             {
                 SetGameState(GAME_STATE.GAME_STATE_START);
@@ -37,7 +41,7 @@ namespace GamePlay
 
         public void Update() 
         {
-            if (gameState == GAME_STATE.GAME_STATE_READY && Input.GetButtonDown("Jump")) 
+            if (gameState == GAME_STATE.GAME_STATE_READY && Input.GetButtonDown(GameSetting.Instance.inputJump)) 
             {
                 SetGameState(GAME_STATE.GAME_STATE_PLAY);
             }
@@ -103,7 +107,7 @@ namespace GamePlay
 
         private void GameOver() 
         {
-            bird = GameObject.FindGameObjectWithTag(TagManager.Instance.Bird);
+            bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
             bird.GetComponent<BirdControler>().OnGameOver();
         }
 
@@ -111,11 +115,17 @@ namespace GamePlay
         {
             UIManager.Instance.CloseWindow(WindowID.UIGamePlay);
             UIManager.Instance.OpenWindow(WindowID.UIGameOver);
+
+            if (gameScore > gameBestScore) 
+            {
+                gameBestScore = gameScore;
+                PlayerPrefs.SetInt(GameSetting.Instance.ppBestScore, gameBestScore);
+            }
         }
 
         private void GameResume() 
         {
-            UnityEngine.Debug.Log("游戏暂停！！");
+            UnityEngine.Debug.Log("GameResume");
         }
     }
 }

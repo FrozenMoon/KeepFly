@@ -28,7 +28,7 @@ namespace GamePlay {
             }
             else if (gs == GAME_STATE.GAME_STATE_PLAY) 
             {
-                if (Input.GetButtonDown("Jump")) 
+                if (Input.GetButtonDown(GameSetting.Instance.inputJump)) 
                 {
                    Jump();
                 }

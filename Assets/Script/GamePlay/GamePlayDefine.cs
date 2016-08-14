@@ -14,8 +14,11 @@ namespace GamePlay
         GAME_STATE_RESUME,
     }
 
-    public class TagManager : Singleton<TagManager> {
-        public string Bird = "Bird";
+
+    public class GameSetting : Singleton<GameSetting> {
+        public string tagBird = "Bird";
+        public string ppBestScore = "gameBestScore";
+        public string inputJump = "Jump";
     }
     
 }
