@@ -24,14 +24,6 @@ namespace Common
         // constructor
         protected Singleton()
         {
-        }
-
-        private Singleton(ref Singleton<T> instance)
-        {
-        }
-
-        private Singleton(Singleton<T> instance)
-        {
-        }   
+        } 
     }
 }

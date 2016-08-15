@@ -14,7 +14,6 @@ namespace GamePlay
         GAME_STATE_RESUME,
     }
 
-
     public class GameSetting : Singleton<GameSetting> {
         public string tagBird = "Bird";
         public string ppBestScore = "gameBestScore";

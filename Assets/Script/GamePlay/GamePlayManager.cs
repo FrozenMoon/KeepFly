@@ -14,21 +14,11 @@ namespace GamePlay
         public int gameScore {get; set;}
         public int gameBestScore {get; set;}
 
-        static bool bStart = false;
 
         public bool Init()
         {
             gameBestScore = PlayerPrefs.GetInt(GameSetting.Instance.ppBestScore, 0);
-
-            if (!bStart) 
-            {
-                SetGameState(GAME_STATE.GAME_STATE_START);
-                bStart = true;
-            }
-            else
-            {
-                SetGameState(GAME_STATE.GAME_STATE_READY);
-            }
+            SetGameState(GAME_STATE.GAME_STATE_START);
             
             return true;
         }
