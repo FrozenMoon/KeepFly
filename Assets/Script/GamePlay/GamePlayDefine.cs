@@ -19,6 +19,8 @@ namespace GamePlay
         public string tagBird = "Bird";
         public string ppBestScore = "gameBestScore";
         public string inputJump = "Jump";
+        public string pipiDown = "pipe_down";
+        public string sceneLevel1 = "Level1";
+        public string sceneMain = "Main";
     }
-    
 }

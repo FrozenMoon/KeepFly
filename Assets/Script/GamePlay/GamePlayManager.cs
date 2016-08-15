@@ -2,6 +2,7 @@
 using System.Collections;
 using Common;
 using UI;
+using UnityEngine.SceneManagement;
 
 namespace GamePlay 
 {
@@ -10,7 +11,6 @@ namespace GamePlay
         public GameObject bird;
         public float speed = 1.5f;
         public GAME_STATE gameState {get; set;}
-
         public int gameScore {get; set;}
         public int gameBestScore {get; set;}
 
@@ -20,7 +20,6 @@ namespace GamePlay
         {
             gameBestScore = PlayerPrefs.GetInt(GameSetting.Instance.ppBestScore, 0);
 
-            bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
             if (!bStart) 
             {
                 SetGameState(GAME_STATE.GAME_STATE_START);
@@ -87,12 +86,22 @@ namespace GamePlay
 
         private void GameStart() 
         {
+            
             UIManager.Instance.OpenWindow(WindowID.UIGameStart);
         }
 
         private void GameReady() 
         {
             gameScore = 0;
+            
+
+            AudioManager.Instance.Play(AudioManager.audioSwitch);
+            AudioManager.Instance.Play(AudioManager.audioBgWindSmall);
+            EffectManager.Instance.Create(EffectManager.effectFlashBlack);
+
+            SceneManager.LoadScene(GameSetting.Instance.sceneLevel1);
+
+            UIManager.Instance.CloseWindow(WindowID.UIGameOver);
             UIManager.Instance.CloseWindow(WindowID.UIGameStart);
             UIManager.Instance.OpenWindow(WindowID.UIGameReady);
         }
@@ -101,13 +110,13 @@ namespace GamePlay
         {
             UIManager.Instance.CloseWindow(WindowID.UIGameReady);
             UIManager.Instance.OpenWindow(WindowID.UIGamePlay);
-            
+
+            bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
             bird.GetComponent<BirdControler>().OnGamePlay();
         }
 
         private void GameOver() 
         {
-            bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
             bird.GetComponent<BirdControler>().OnGameOver();
         }
 

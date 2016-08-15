@@ -7,17 +7,17 @@ namespace UI
 {
     public class UIGamePlay : UIBase 
     {
-        private Text textScore;
-
-	    void Update() 
-        {
-	        textScore.text = GamePlayManager.Instance.gameScore.ToString();
-	    }
+	    private Transform textScore;
 
         protected override void OnInit()
         {
-            textScore = transform.FindChild("TextScore").gameObject.GetComponent<Text>();
+            textScore = transform.FindChild("TextScore");
         }
+
+        void Update() 
+        {
+	        textScore.GetComponent<Text>().text = GamePlayManager.Instance.gameScore.ToString();
+	    }
 
         protected override void OnOpen(object[] args)
         {
@@ -28,7 +28,6 @@ namespace UI
         {
             
         }
-
     }
 }
 

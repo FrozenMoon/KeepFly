@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 namespace GamePlay {
     public class BirdControler : MonoBehaviour 
@@ -54,6 +55,7 @@ namespace GamePlay {
         public void OnGameOver() 
         {
             GetComponent<Animator>().Stop();
+            EffectManager.Instance.Create(EffectManager.effectFlashWhite);
         }
 
         public void Jump() 
@@ -64,6 +66,7 @@ namespace GamePlay {
             Vector3 vel = GetComponent<Rigidbody2D>().velocity;
              // Y轴的速度
             GetComponent<Rigidbody2D>().velocity = new Vector3(vel.x, jumpY, vel.z);
+            AudioManager.Instance.Play(AudioManager.audioJump);
         }
 
         private void MoveY() 

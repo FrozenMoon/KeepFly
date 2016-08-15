@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 namespace GamePlay {
 
@@ -45,13 +46,14 @@ namespace GamePlay {
         public void OnTriggerExit2D(Collider2D co) {
             if (GamePlayManager.Instance.gameState == GAME_STATE.GAME_STATE_PLAY) 
             {
+                AudioManager.Instance.Play(AudioManager.audioScore);
                 GamePlayManager.Instance.gameScore += 1;
             }
         }
 
         private void RandomMoveY() 
         {
-            float randomY = Random.Range(-0.6f, 1f);
+            float randomY = Random.Range(-0.7f, 1.2f);
             transform.position = new Vector3(transform.position.x, randomY, transform.position.z);
         }
     }

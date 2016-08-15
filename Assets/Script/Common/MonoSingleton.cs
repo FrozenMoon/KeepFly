@@ -6,6 +6,8 @@ namespace Common
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         private static T instance = null;
+        private bool inited = false;
+
         public static T Instance
         {
             get
@@ -34,17 +36,24 @@ namespace Common
             instance = null;
         }  
         
-        private bool inited = false;
         public void Init()
         {
-            if (inited) return;
+            if (inited)
+            {
+                return;
+            }
+                
             inited = true;
             OnInit();
         }
 
         public void UnInit()
         {
-            if (!inited) return;
+            if (!inited)
+            {
+                return;
+            }
+
             inited = false;
             OnUnInit();
         }

@@ -56,7 +56,7 @@ namespace UI
             {
                 medal = Resources.Load("Sprites/UI/medals_2", typeof(Sprite)) as Sprite;
             }
-            else if (score < 100) 
+            else
             {
                 medal = Resources.Load<Sprite>("Sprites/UI/medals_3");
             }
@@ -71,7 +71,7 @@ namespace UI
 
         private void OnBtnPlay() 
         {
-            SceneManager.LoadScene("Main");
+            GamePlayManager.Instance.SetGameState(GAME_STATE.GAME_STATE_READY);
         }
     }
 }

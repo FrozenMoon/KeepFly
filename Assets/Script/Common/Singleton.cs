@@ -22,7 +22,6 @@ namespace Common
         }
 
         // constructor
-        #region
         protected Singleton()
         {
         }
@@ -33,8 +32,6 @@ namespace Common
 
         private Singleton(Singleton<T> instance)
         {
-        }
-
-        #endregion     
+        }   
     }
 }

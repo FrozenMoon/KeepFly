@@ -1,36 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Common;
 using GamePlay;
 using UI;
 
-public class Game : MonoSingleton<Game>
+namespace Common 
 {
-    public void Start()
+    public class Game : MonoSingleton<Game>
     {
-        Init();
-    }
-
-    protected override void OnInit()
-    {
-        UIManager.Instance.Init();
-
-        if (!GamePlayManager.Instance.Init())
+        public void Start()
         {
-            UnityEngine.Debug.LogError("GamePlayManager Init fail.");
-            return;
+            DontDestroyOnLoad(this);
+            Init();
+        }
+
+        protected override void OnInit()
+        {
+            AudioManager.Instance.Init();
+            EffectManager.Instance.Init();
+            UIManager.Instance.Init();
+
+            if (!GamePlayManager.Instance.Init())
+            {
+                UnityEngine.Debug.LogError("GamePlayManager Init fail.");
+                return;
+            }
+        }
+
+        protected override void OnUnInit()
+        {
+            AudioManager.Instance.UnInit();
+            EffectManager.Instance.UnInit();
+            UIManager.Instance.UnInit();
+            GamePlayManager.Instance.UnInit();
+        }
+
+        void Update()
+        {
+            GamePlayManager.Instance.Update();
         }
     }
-
-    protected override void OnUnInit()
-    {
-       UIManager.Instance.UnInit();
-       GamePlayManager.Instance.UnInit();
-    }
-
-    void Update()
-    {
-        GamePlayManager.Instance.Update();
-    }
 }
+
 

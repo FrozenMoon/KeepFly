@@ -41,10 +41,14 @@ namespace GamePlay
             this.transform.position = new Vector3(bornX, this.transform.position.y, this.transform.position.z);
         }
 
-        public void OnCollisionEnter2D(Collision2D co) {
+        public void OnCollisionEnter2D(Collision2D co) 
+        {
             if (GamePlayManager.Instance.gameState == GAME_STATE.GAME_STATE_PLAY) 
             {
-                 if (co.gameObject.tag == GameSetting.Instance.tagBird){
+                if (co.gameObject.tag == GameSetting.Instance.tagBird)
+                {
+                    AudioManager.Instance.Play(AudioManager.audioHit);
+                    EffectManager.Instance.Create(EffectManager.effectHit, co.transform.position);
                     GamePlayManager.Instance.SetGameState(GAME_STATE.GAME_STATE_OVER);
                 }
             }
