@@ -18,14 +18,7 @@ namespace UI
 
         void Update() 
         {
-	        textScore.GetComponent<Text>().text = GamePlayManager.Instance.gameScore.ToString();
-
-            GameObject bird = GameObject.FindGameObjectWithTag(GameSetting.Instance.tagBird);
-            if (bird) 
-            {
-                textDebug.GetComponent<Text>().text = string.Format("{0}, {1}, {2}", bird.transform.position.x, bird.transform.position.y, bird.transform.position.z);    
-            }
-            
+	        textScore.GetComponent<Text>().text = GamePlayManager.Instance.gameScore.ToString(); 
 	    }
 
         protected override void OnOpen(object[] args)
