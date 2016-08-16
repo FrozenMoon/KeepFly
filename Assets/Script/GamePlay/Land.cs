@@ -7,7 +7,7 @@ namespace GamePlay
 
     public class Land : MonoBehaviour 
     {
-        private float bornX = 3.3f;
+        private float bornX = 3.35f;
         private float deathX = -3.1f;
         private Vector3 direction;
 
@@ -20,7 +20,7 @@ namespace GamePlay
         // Update is called once per frame
         void Update() 
         {
-            if (GamePlayManager.Instance.gameState == GAME_STATE.GAME_STATE_PLAY) 
+            if (GamePlayManager.Instance.gameState <= GAME_STATE.GAME_STATE_PLAY) 
             {
                 this.transform.Translate(direction * Time.deltaTime * GamePlayManager.Instance.speed);
 
