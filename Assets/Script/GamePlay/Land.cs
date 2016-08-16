@@ -7,7 +7,7 @@ namespace GamePlay
 
     public class Land : MonoBehaviour 
     {
-        private float bornX = 3.35f;
+        private float bornX = 3.1f;
         private float deathX = -3.1f;
         private Vector3 direction;
 

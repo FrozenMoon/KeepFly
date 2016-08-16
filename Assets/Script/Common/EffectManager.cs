@@ -16,7 +16,8 @@ namespace Common
         {
             efDic = new Dictionary<string, UnityEngine.Object>();
         }
-	    public bool Create(string path, Vector3 position, Quaternion rotation)
+        
+        public bool Create(string path, Vector3 position, Quaternion rotation)
         {
             if (!efDic.ContainsKey(path))
             {
