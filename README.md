@@ -4,7 +4,7 @@ Unity3D version: Unity 5.4.0f3
 
 ---
 
-这是一款99%高仿Flappy Bird的游戏，目的是学习 Unity3D的基础知识。
+这是一款99%高仿Flappy Bird的游戏，目的是学习Unity3D的基础知识。
 
 为什么会选择这款游戏？原因有以下几点：
 + GamePlay简单，能专注于基础知识而不是复杂的GamePlay
@@ -17,14 +17,13 @@ Unity3D version: Unity 5.4.0f3
 + 资源规范，代码规范
 + 在Unity项目中使用单例模式（Singleton）
 + 一个简单，清晰的游戏框架
-+ Transform, GameObject, Component的使用
-+ Animation & Animator 的使用
-+ Rigidbody2D & Collider 2D 的使用 
++ Transform, GameObject, Component
++ Animation & Animator
++ Rigidbody2D & Collider 2D
 + UGUI的基本用法，UI制作规范，UIManager的实现
 + 存档：PlayerPrefs的使用
-+ Audio的基本用法
-+ 制作简单游戏特效
-+ 场景管理的思路
++ 声音：Audio
++ 简单特效：Effect
 + Build & Build Setting
 
 已经简单封装模块有：
@@ -37,6 +36,3 @@ Unity3D version: Unity 5.4.0f3
 
 如果想了解更多的细节和思路，请访问我博客：
 还没写好哈哈哈哈哈
-
-后续会在这个项目的基础上，新加一些好玩的东西，可能是新知识的实践，也可能是引入优秀的插件，必须会有的是加入更多的玩法！项目地址：
-还没开始写哈哈哈哈哈
