@@ -42,9 +42,7 @@ namespace UI
             {
                 if (ui)
                 {
-                    ui.gameObject.SetActive(false);
-                    ui.Close(null);
-                    DestroyImmediate(ui.gameObject);
+                    DestroyWindow(ui.ID);
                 }
             }
             Array.Clear(uiWindows, 0, uiWindows.Length);
@@ -93,19 +91,16 @@ namespace UI
 			return Instance.uiWindows[(int)id];
 		}
 
-        public void Destroy(WindowID id)
+        public void DestroyWindow(WindowID id)
         {
             UIBase ui = uiWindows[(int)id];
             if (!ui)
             {
                 return;
             }
-                
-            if (IsOpen(id))
-            {
-	            CloseWindow(id);
-            }
-
+            
+	        CloseWindow(id);
+            ui.UnInit();
             uiWindows[(int)id] = null;
             DestroyImmediate(ui);
         }

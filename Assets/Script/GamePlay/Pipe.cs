@@ -48,6 +48,10 @@ namespace GamePlay {
             {
                 AudioManager.Instance.Play(AudioManager.audioScore);
                 GamePlayManager.Instance.gameScore += 1;
+
+                GameEvent e = new GameEvent();
+                e.nParam = GamePlayManager.Instance.gameScore;
+                EventManger.Instance.Raise(e);
             }
         }
 

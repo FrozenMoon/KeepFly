@@ -2,6 +2,8 @@
 using System.Collections;
 using GamePlay;
 using UnityEngine.UI;
+using Common;
+using UnityEngine.Events;
 
 namespace UI 
 {
@@ -14,21 +16,23 @@ namespace UI
         {
             textScore = transform.Find("TextScore");
             textDebug = transform.Find("TextDebug");
-        }
 
-        void Update() 
-        {
-	        textScore.GetComponent<Text>().text = GamePlayManager.Instance.gameScore.ToString(); 
-	    }
+            EventManger.Instance.AddListener<GameEvent>(UpdateScore);
+        }
 
         protected override void OnOpen(object[] args)
         {
-           
+            
         }
 
         protected override void OnClose()
         {
-            
+            EventManger.Instance.RemoveListener<GameEvent>(UpdateScore);
+        }
+
+        void UpdateScore(GameEvent e)
+        {
+            textScore.GetComponent<Text>().text = e.nParam.ToString();
         }
     }
 }

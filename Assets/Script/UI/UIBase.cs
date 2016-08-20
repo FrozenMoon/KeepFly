@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace UI
 {
@@ -9,12 +10,14 @@ namespace UI
 		[HideInInspector]
         public WindowID ID;
         private bool inited = false;
-        private Action<object> onClose;
 
         public void Init()
         {
-            if (inited) 
-            return;
+            if (inited)
+            {
+                return;
+            }
+                
             inited = true;
 
             bool active = gameObject.activeSelf;
@@ -22,6 +25,11 @@ namespace UI
 
             OnInit();
             gameObject.SetActive(active);
+        }
+
+        public void UnInit()
+        {
+
         }
 
         public bool IsOpen()
@@ -41,12 +49,6 @@ namespace UI
         {
             if (!this)
                 return;
-
-            if (onClose != null)
-            {
-                onClose(message);
-                onClose = null;
-            }
 
             OnClose();
         }
@@ -68,7 +70,7 @@ namespace UI
 
         #region static fuction
 
-        static public bool AddBtnClick(Transform parent, string path, UnityEngine.Events.UnityAction call) 
+        static public bool AddBtnClick(Transform parent, string path, UnityAction call) 
         {
             Transform child = parent.Find(path);
             if (!child) 
