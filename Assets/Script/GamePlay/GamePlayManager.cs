@@ -71,6 +71,11 @@ namespace GamePlay
                     GameResume();
                     break;
                 }
+                case GAME_STATE.GAME_STATE_GOON: 
+                {
+                    GameGoOn();
+                    break;
+                }
             }
         }
 
@@ -124,7 +129,14 @@ namespace GamePlay
 
         private void GameResume() 
         {
-            UnityEngine.Debug.Log("GameResume");
+            Time.timeScale = 0;
+        }
+
+        private void GameGoOn() 
+        {
+            Time.timeScale = 1f;
+
+            gameState = GAME_STATE.GAME_STATE_PLAY;
         }
     }
 }

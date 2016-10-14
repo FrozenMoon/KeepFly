@@ -12,6 +12,7 @@ namespace GamePlay
         GAME_STATE_OVER,
         GAME_STATE_SCORE,
         GAME_STATE_RESUME,
+        GAME_STATE_GOON
     }
 
     public class GameSetting : Singleton<GameSetting> {
